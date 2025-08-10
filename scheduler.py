@@ -23,5 +23,5 @@ def log_stock_price():
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(log_stock_price, 'interval', minutes=1)
+    scheduler.add_job(log_stock_price, 'interval', minutes=5)
     scheduler.start()

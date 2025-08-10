@@ -74,7 +74,7 @@ def graphs():
             y=group["price"],
             mode="lines+markers",
             name=symbol,
-            hovertemplate="$%{y:.2f}<extra></extra>",
+            hovertemplate="$%{y:.2f} on %{x}<extra></extra>",
             fillcolor="black"
         ))
 
@@ -108,7 +108,12 @@ def graphs():
                 title=dict(font=dict(color='white'))
             )
         )
-
+        if livePrice(symbol).get("d") > 0:
+            fig.update_traces(line_color='green')
+        else:
+            fig.update_traces(line_color='red')
+            
+        
 
         graph_html = pio.to_html(fig, full_html=True)
         graphs_html.append(graph_html)
